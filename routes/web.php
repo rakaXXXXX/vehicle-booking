@@ -5,12 +5,12 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\DashboardController;
 
 // Halaman Utama - Arahkan ke login jika belum login, atau ke dashboard jika sudah login
-Route::get('/', function () {
+Route::middleware('web')->get('/', function () {
     if (auth()->check()) {
         return redirect()->route('dashboard');
     }
     return view('auth.login');
-})->name('home'); // Ubah nama route jadi 'home' untuk menghindari konflik
+})->name('home');
 
 Route::middleware(['guest'])->group(function () {
     Route::get('/', function () {

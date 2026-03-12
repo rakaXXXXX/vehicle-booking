@@ -10,7 +10,14 @@ return Application::configure(basePath: dirname(__DIR__))
         commands: __DIR__.'/../routes/console.php',
         health: '/up',
     )
-   ->withMiddleware(function (Middleware $middleware) {
+->withMiddleware(function (Middleware $middleware) {
+$middleware->web(append: [
+        \Illuminate\Session\Middleware\StartSession::class,
+        \Illuminate\View\Middleware\ShareErrorsFromSession::class,
+        \Illuminate\Foundation\Http\Middleware\VerifyCsrfToken::class,
+        \Illuminate\Routing\Middleware\SubstituteBindings::class,
+    ]);
+    
     $middleware->alias([
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
     ]);
