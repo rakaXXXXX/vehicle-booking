@@ -42,7 +42,7 @@
                                     <strong>{{ $booking->start_date->format('d M Y') }}</strong>
                                     <br><small>{{ $booking->end_date->format('d M Y') }}</small>
                                 </td>
-                                <td>{{ $booking->vehicle->license_plate ?? 'Not selected' }}</td>
+{{ $booking->vehicle?->license_plate ?? 'N/A' }}
                                 <td>{{ $booking->requester->full_name }}</td>
                                 <td>{{ $booking->driver->full_name ?? 'Not assigned' }}</td>
                                 <td>

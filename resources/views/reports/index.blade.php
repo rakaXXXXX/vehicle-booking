@@ -89,7 +89,7 @@
                             @foreach($bookings as $booking)
                             <tr>
                                 <td>{{ $booking->start_date->format('d M Y') }}</td>
-                                <td>{{ $booking->vehicle->license_plate }}</td>
+{{ $booking->vehicle?->license_plate ?? 'N/A' }}
                                 <td>{{ $booking->requester->full_name }}</td>
                                 <td><span class="badge bg-{{ $booking->status == 'approved' ? 'success' : 'warning' }}">{{ ucfirst($booking->status) }}</span></td>
                                 <td>

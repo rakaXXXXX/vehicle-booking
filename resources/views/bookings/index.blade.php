@@ -38,7 +38,7 @@
                         @forelse($bookings as $booking)
                         <tr>
                             <td>{{ $booking->start_date->format('d/M/Y') }} - {{ $booking->end_date->format('d/M/Y') }}</td>
-                            <td>{{ $booking->vehicle->license_plate ?? 'N/A' }}</td>
+{{ $booking->vehicle?->license_plate ?? 'N/A' }}
                             <td>{{ $booking->requester->full_name }}</td>
                             <td>{{ $booking->driver->full_name ?? 'TBD' }}</td>
                             <td>

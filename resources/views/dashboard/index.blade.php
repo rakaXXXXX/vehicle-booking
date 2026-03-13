@@ -108,7 +108,7 @@
                                 <div>
                                     <h6 class="mb-1">{{ $booking->booking_number }}</h6>
                                     <small class="text-muted">
-                                        {{ $booking->vehicle->license_plate ?? 'N/A' }} - 
+{{ $booking->vehicle?->license_plate ?? 'N/A' }}
                                         Driver: {{ $booking->driver->full_name ?? 'N/A' }}
                                     </small>
                                 </div>
