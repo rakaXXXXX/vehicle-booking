@@ -26,15 +26,14 @@ class DashboardController extends Controller
         ];
 
         // Grafik pemakaian per bulan
-        $usageChart = Booking::select(
-                DB::raw('MONTH(created_at) as month'),
-                DB::raw('COUNT(*) as total')
-            )
-            ->whereYear('created_at', date('Y'))
-            ->groupBy('month')
-            ->orderBy('month')
-            ->get();
-
+       $usageChart = Booking::select(
+        DB::raw('EXTRACT(MONTH FROM created_at) as month'),
+        DB::raw('COUNT(*) as total')
+    )
+    ->whereYear('created_at', date('Y'))
+    ->groupByRaw('EXTRACT(MONTH FROM created_at)')
+    ->orderBy('month')
+    ->get();
         // Jika tidak ada data, buat data dummy
         if ($usageChart->isEmpty()) {
             $usageChart = collect([
